@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "25f06dda-0aa6-4358-8d45-611a6b941fb1",
+		"name": "library_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obain Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/api-token-auth/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"api-token-auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Author",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. John\",\r\n    \"date_of_birth\": \"1988-05-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-author/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-author",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Author",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get-author/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-author",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Author",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\",\r\n    \"date_of_birth\": \"1988-05-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/update-author/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"update-author",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Author",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\",\r\n    \"date_of_birth\": \"1988-05-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/author/1/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"author",
+						"1",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Author by Params",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get-author/?author_name=Mr. John&date_of_birth=1988-05-30",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-author",
+						""
+					],
+					"query": [
+						{
+							"key": "author_name",
+							"value": "Mr. John"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "1988-05-30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Axe\",\r\n    \"author\": 2,\r\n    \"published_date\": \"1985-03-15\",\r\n    \"genre\": \"Comics\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/add-book/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"add-book",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get-book/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-book",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get-book/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-book",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Axe 1\",\r\n    \"published_date\": \"1985-03-15\",\r\n    \"genre\": \"Comics\",\r\n    \"author\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/update-book/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"update-book",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\",\r\n    \"date_of_birth\": \"1988-05-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/book/1/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"book",
+						"1",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book by Author Name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/book-author-name/?author_name=Mr. John",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"book-author-name",
+						""
+					],
+					"query": [
+						{
+							"key": "author_name",
+							"value": "Mr. John"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
