@@ -556,6 +556,63 @@
 			"response": []
 		},
 		{
+			"name": "Get Books by Params",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get-book/?genre=Comics",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get-book",
+						""
+					],
+					"query": [
+						{
+							"key": "genre",
+							"value": "Comics"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Book by Author Name",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -606,6 +663,67 @@
 						{
 							"key": "author_name",
 							"value": "Mr. John"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book by Published Date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "headerPrefix",
+							"value": "Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author_name\": \"Mr. J\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/books-published-date/?start_date=1980-01-01&end_date=2024-01-01",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"books-published-date",
+						""
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "1980-01-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2024-01-01"
 						}
 					]
 				}

@@ -11,3 +11,4 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     published_date = models.DateField(verbose_name="Published Date")
     genre = models.CharField(max_length=100, verbose_name="Genre")
+    is_archived = models.BooleanField(default=False)

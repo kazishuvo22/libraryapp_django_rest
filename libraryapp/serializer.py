@@ -10,8 +10,6 @@ class AuthorSerializer(ModelSerializer):
 
 
 class BookSerializer(ModelSerializer):
-    author_name = serializers.CharField(source='Author.name')
-
     class Meta:
         model = Book
-        fields = '__all__'
+        fields = ('title', 'author', 'published_date', 'genre')

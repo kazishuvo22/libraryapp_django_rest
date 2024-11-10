@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.utils.dateparse import parse_date
 from knox.serializers import UserSerializer, User
 from rest_framework import status, serializers
 from rest_framework.authentication import TokenAuthentication
@@ -130,17 +131,37 @@ def delete_book(request, pk):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def book_by_author_name(request):
-    if request.query_params:
-        booklist = []
-        get_author = Author.objects.filter(**request.query_params.dict())
+    author_name = request.query_params.get('author_name', None)
 
-        for author in get_author:
-            books = Book.objects.filter(author=author.pk)
-            booklist.append(books)
+    if author_name:
+        authors = Author.objects.filter(author_name=author_name)
 
-        # if there is something in items else raise error
-        if booklist:
+        if authors.exists():
+            booklist = Book.objects.filter(author__in=authors)
             serializer = BookSerializer(booklist, many=True)
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "No authors found with that name."}, status=status.HTTP_404_NOT_FOUND)
+
+    return Response({"error": "Author name not provided."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def book_by_published_date(request):
+    start_date_str = request.query_params.get('start_date', None)
+    end_date_str = request.query_params.get('end_date', None)
+
+    if start_date_str and end_date_str:
+        start_date = parse_date(start_date_str)
+        end_date = parse_date(end_date_str)
+
+        if start_date and end_date:
+            books = Book.objects.filter(published_date__range=(start_date, end_date))
+            serializer = BookSerializer(books, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Date format must be YYYY-MM-DD."}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({"error": "start_date and end_date are required."}, status=status.HTTP_400_BAD_REQUEST)
